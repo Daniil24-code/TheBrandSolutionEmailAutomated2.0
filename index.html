@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brand Solution — Client Questionnaire</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('kbqVSPvb3R4b17X3y');</script>
+<style>
+  :root {
+    --bg: #030712;
+    --surface: #0c1220;
+    --surface2: #111827;
+    --border: rgba(99,211,255,0.12);
+    --border-active: rgba(99,211,255,0.5);
+    --accent: #63d3ff;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --text: #e2e8f0;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
+    --danger: #f87171;
+    --glow: 0 0 40px rgba(99,211,255,0.12);
+    --glow-strong: 0 0 60px rgba(99,211,255,0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99,211,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99,211,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, rgba(99,211,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────── */
+  header {
+    position: relative;
+    z-index: 10;
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(3,7,18,0.8);
+    backdrop-filter: blur(20px);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .logo span { color: var(--accent); }
+
+  .header-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 100px;
+  }
+
+  /* ─── HERO ──────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 80px 24px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--accent) 60%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 40px rgba(99,211,255,0.3);
+  }
+
+  .start-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 60px rgba(99,211,255,0.5);
+    transform: translateY(-2px);
+  }
+
+  .start-btn svg { width: 16px; height: 16px; }
+
+  /* ─── PROGRESS BAR ───────────────────────────────────── */
+  .progress-wrap {
+    position: relative;
+    z-index: 10;
+    padding: 0 24px;
+    margin-bottom: 0;
+    display: none;
+  }
+
+  .progress-wrap.visible { display: block; }
+
+  .progress-header {
+    max-width: 860px;
+    margin: 0 auto 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .progress-section-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .progress-counter {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .progress-track {
+    max-width: 860px;
+    margin: 0 auto 32px;
+    height: 2px;
+    background: var(--surface2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 0 10px var(--accent);
+    width: 0%;
+  }
+
+  /* ─── FORM WRAPPER ───────────────────────────────────── */
+  #form-wrapper {
+    display: none;
+    position: relative;
+    z-index: 5;
+    padding: 0 24px 80px;
+  }
+
+  #form-wrapper.visible { display: block; }
+
+  /* ─── SECTION CARD ───────────────────────────────────── */
+  .section-card {
+    display: none;
+    max-width: 860px;
+    margin: 0 auto;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .section-card.active { display: block; }
+
+  .section-header {
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── QUESTIONS ──────────────────────────────────────── */
+  .questions-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .q-row {
+    display: grid;
+    gap: 24px;
+  }
+
+  .q-row.cols-2 { grid-template-columns: 1fr 1fr; }
+  .q-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .question {
+    position: relative;
+  }
+
+  .q-label {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.4;
+  }
+
+  .q-label .req { color: var(--accent); font-size: 16px; line-height: 1; margin-top: 1px; }
+
+  .q-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  textarea,
+  select {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 14px 18px;
+    outline: none;
+    transition: all 0.25s ease;
+    appearance: none;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--accent);
+    background: rgba(99,211,255,0.04);
+    box-shadow: 0 0 0 3px rgba(99,211,255,0.08), var(--glow);
+  }
+
+  input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: 0.6; }
+
+  textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+
+  select option { background: var(--surface2); }
+
+  /* ─── RADIO / CHECKBOX ───────────────────────────────── */
+  .radio-group, .check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .radio-group.vertical, .check-group.vertical {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .radio-pill input, .check-pill input { display: none; }
+
+  .radio-pill label, .check-pill label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--surface);
+    white-space: nowrap;
+  }
+
+  .radio-pill input:checked + label,
+  .check-pill input:checked + label {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(99,211,255,0.08);
+    box-shadow: 0 0 16px rgba(99,211,255,0.1);
+  }
+
+  .radio-pill label:hover, .check-pill label:hover {
+    border-color: rgba(99,211,255,0.3);
+    color: var(--text);
+  }
+
+  .pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .radio-pill input:checked + label .pill-dot {
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  /* ─── SCALE ──────────────────────────────────────────── */
+  .scale-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .scale-label-end {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    font-style: italic;
+  }
+
+  input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 2px;
+    background: var(--surface2);
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 0;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(99,211,255,0.5);
+    transition: box-shadow 0.2s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 20px rgba(99,211,255,0.8);
+  }
+
+  .scale-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    min-width: 28px;
+    text-align: center;
+  }
+
+  /* ─── REPEATER ───────────────────────────────────────── */
+  .repeater { display: flex; flex-direction: column; gap: 10px; }
+
+  .repeater-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: fadeUp 0.3s ease;
+  }
+
+  .repeater-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    min-width: 24px;
+    text-align: right;
+    opacity: 0.7;
+  }
+
+  .repeater-row input { flex: 1; }
+
+  .add-btn, .remove-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 4px;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .add-btn:hover { border-color: var(--accent3); color: var(--accent3); }
+  .remove-btn:hover { border-color: var(--danger); color: var(--danger); }
+
+  .add-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px dashed var(--border);
+    color: var(--text-muted);
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-family: 'Space Mono', monospace;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+    align-self: flex-start;
+  }
+
+  .add-more-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── NAV BUTTONS ────────────────────────────────────── */
+  .nav-row {
+    max-width: 860px;
+    margin: 40px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .btn-back:hover { border-color: var(--text-muted); color: var(--text); }
+
+  .btn-next {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 0 30px rgba(99,211,255,0.2);
+    margin-left: auto;
+  }
+
+  .btn-next:hover { background: #fff; box-shadow: 0 0 50px rgba(99,211,255,0.4); transform: translateY(-1px); }
+
+  .btn-submit {
+    background: linear-gradient(135deg, var(--accent3), var(--accent));
+    box-shadow: 0 0 40px rgba(52,211,153,0.3);
+  }
+
+  .btn-submit:hover { background: #fff; box-shadow: 0 0 60px rgba(52,211,153,0.5); }
+
+  /* ─── SUCCESS ────────────────────────────────────────── */
+  #success-screen {
+    display: none;
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 80px 24px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  #success-screen.visible { display: block; }
+
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(52,211,153,0.1);
+    border: 1px solid rgba(52,211,153,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 32px;
+    font-size: 36px;
+    box-shadow: 0 0 40px rgba(52,211,153,0.2);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(52,211,153,0.2); }
+    50% { box-shadow: 0 0 70px rgba(52,211,153,0.4); }
+  }
+
+  .success-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 42px;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--accent3), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .success-sub {
+    font-size: 17px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto 48px;
+  }
+
+  /* Summary box */
+  .summary-box {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .summary-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .summary-header h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(99,211,255,0.1);
+    border: 1px solid var(--border-active);
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .copy-btn:hover { background: rgba(99,211,255,0.2); }
+
+  #summary-output {
+    padding: 24px 28px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    text-align: left;
+    white-space: pre-wrap;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  #summary-output::-webkit-scrollbar { width: 4px; }
+  #summary-output::-webkit-scrollbar-track { background: transparent; }
+  #summary-output::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 4px; }
+
+  /* ─── SECTION PILLS ──────────────────────────────────── */
+  .sections-nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 20px 24px 32px;
+    flex-wrap: wrap;
+    display: none;
+  }
+
+  .sections-nav.visible { display: flex; }
+
+  .snav-pill {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: all 0.25s;
+    cursor: default;
+  }
+
+  .snav-pill.done {
+    border-color: rgba(52,211,153,0.4);
+    color: var(--accent3);
+    background: rgba(52,211,153,0.06);
+  }
+
+  .snav-pill.current {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(99,211,255,0.08);
+    box-shadow: 0 0 14px rgba(99,211,255,0.15);
+  }
+
+  /* ─── DIVIDER ────────────────────────────────────────── */
+  .q-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 8px 0;
+  }
+
+  /* ─── ANIMATIONS ─────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 680px) {
+    header { padding: 20px 20px; }
+    .hero { padding: 60px 16px 40px; }
+    .q-row.cols-2, .q-row.cols-3 { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+    .nav-row { flex-wrap: wrap; }
+    .btn-back { width: 100%; justify-content: center; order: 2; }
+    .btn-next { width: 100%; justify-content: center; margin-left: 0; }
+  }
+
+  /* ─── TOOLTIP / ERROR ────────────────────────────────── */
+  .field-error {
+    font-size: 12px;
+    color: var(--danger);
+    margin-top: 6px;
+    display: none;
+  }
+
+  .field-error.show { display: block; }
+  input.error, textarea.error, select.error { border-color: var(--danger); }
+
+  /* notification toast */
+  #toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--surface2);
+    border: 1px solid var(--border-active);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    z-index: 9999;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    white-space: nowrap;
+  }
+
+  #toast.show { transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">The Brand <span>Solution</span></div>
+  <div class="header-tag">Client Intelligence Briefing</div>
+</header>
+
+<!-- HERO (landing screen) -->
+<section class="hero" id="hero-section">
+  <div class="hero-eyebrow">Step 1 of your content system</div>
+  <h1>Your Authority<br>Blueprint Begins Here</h1>
+  <p>Answer every question honestly and in detail. Your responses go directly into our content AI to build your complete Instagram strategy — hooks, scripts, calendars, and funnel playbooks.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Sections</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">~12</div>
+      <div class="stat-label">Minutes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Confidential</div>
+    </div>
+  </div>
+  <button class="start-btn" onclick="startForm()">
+    Start My Blueprint
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </button>
+</section>
+
+<!-- SECTION PILLS NAV -->
+<div class="sections-nav" id="sections-nav">
+  <div class="snav-pill" id="pill-0">01 You</div>
+  <div class="snav-pill" id="pill-1">02 Niche</div>
+  <div class="snav-pill" id="pill-2">03 Client</div>
+  <div class="snav-pill" id="pill-3">04 Pain &amp; Desire</div>
+  <div class="snav-pill" id="pill-4">05 Market</div>
+  <div class="snav-pill" id="pill-5">06 Marketing IQ</div>
+  <div class="snav-pill" id="pill-6">07 Your Offer</div>
+  <div class="snav-pill" id="pill-7">08 Goals</div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap" id="progress-wrap">
+  <div class="progress-header">
+    <div class="progress-section-name" id="progress-section-name">—</div>
+    <div class="progress-counter" id="progress-counter">0 / 8</div>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+</div>
+
+<!-- FORM WRAPPER -->
+<div id="form-wrapper">
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 0 — ABOUT YOU
+  ══════════════════════════════════════════════ -->
+  <div class="section-card active" id="section-0">
+    <div class="section-header">
+      <div class="section-tag">Section 01</div>
+      <h2 class="section-title">About You</h2>
+      <p class="section-desc">Let's start with the basics — who you are and where we can reach you.</p>
+    </div>
+    <div class="questions-grid">
+
+      <div class="q-row cols-2">
+        <div class="question">
+          <div class="q-label"><span class="req">*</span> Your Full Name</div>
+          <input type="text" id="q-name" placeholder="e.g. Sarah Johnson">
+        </div>
+        <div class="question">
+          <div class="q-label"><span class="req">*</span> Email Address</div>
+          <input type="email" id="q-email" placeholder="you@email.com">
+        </div>
+      </div>
+
+      <div class="q-row cols-2">
+        <div class="question">
+          <div class="q-label">Instagram Handle</div>
+          <div class="q-hint">Your main account — the one we're building the strategy for</div>
+          <input type="text" id="q-instagram" placeholder="@yourhandle">
+        </div>
+        <div class="question">
+          <div class="q-label">Website / Link in Bio URL</div>
+          <input type="url" id="q-website" placeholder="https://...">
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> What do you do in one sentence?</div>
+        <div class="q-hint">Describe your profession or business as simply as possible</div>
+        <input type="text" id="q-what-you-do" placeholder="e.g. I teach ballroom dance to social dancers in Canada">
+      </div>
+
+      <div class="q-row cols-2">
+        <div class="question">
+          <div class="q-label"><span class="req">*</span> How long have you been doing this?</div>
+          <select id="q-experience">
+            <option value="" disabled selected>Select a range</option>
+            <option>Less than 1 year</option>
+            <option>1–2 years</option>
+            <option>3–5 years</option>
+            <option>5–10 years</option>
+            <option>10+ years</option>
+          </select>
+        </div>
+        <div class="question">
+          <div class="q-label"><span class="req">*</span> Current follower count on Instagram</div>
+          <select id="q-followers">
+            <option value="" disabled selected>Select a range</option>
+            <option>0–100</option>
+            <option>100–500</option>
+            <option>500–1,000</option>
+            <option>1,000–5,000</option>
+            <option>5,000–10,000</option>
+            <option>10,000–50,000</option>
+            <option>50,000+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Location / Where you operate</div>
+        <div class="q-hint">City, country, or "online only"</div>
+        <input type="text" id="q-location" placeholder="e.g. Toronto, Canada — also online">
+      </div>
+
+    </div>
+    <div class="nav-row">
+      <button class="btn-next" onclick="nextSection()">
+        Next: Your Niche
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 1 — NICHE
+  ══════════════════════════════════════════════ -->
+  <div class="section-card" id="section-1">
+    <div class="section-header">
+      <div class="section-tag">Section 02</div>
+      <h2 class="section-title">Your Niche</h2>
+      <p class="section-desc">Specificity is everything. The clearer your niche, the more powerful your content system will be.</p>
+    </div>
+    <div class="questions-grid">
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> What is your primary niche?</div>
+        <div class="q-hint">The broad industry or space you operate in (e.g. fitness coaching, ballroom dance, real estate, nutrition, online business)</div>
+        <input type="text" id="q-niche" placeholder="e.g. Ballroom Dance Education">
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> List your 5 sub-niches</div>
+        <div class="q-hint">Break your niche into 5 more specific categories or angles (e.g. beginner social dance, Latin ballroom, competition prep)</div>
+        <div class="repeater" id="subniche-list">
+          <div class="repeater-row">
+            <span class="repeater-num">01</span>
+            <input type="text" placeholder="Sub-niche #1">
+          </div>
+          <div class="repeater-row">
+            <span class="repeater-num">02</span>
+            <input type="text" placeholder="Sub-niche #2">
+          </div>
+          <div class="repeater-row">
+            <span class="repeater-num">03</span>
+            <input type="text" placeholder="Sub-niche #3">
+          </div>
+          <div class="repeater-row">
+            <span class="repeater-num">04</span>
+            <input type="text" placeholder="Sub-niche #4">
+          </div>
+          <div class="repeater-row">
+            <span class="repeater-num">05</span>
+            <input type="text" placeholder="Sub-niche #5">
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> What do you want to be the #1 authority on?</div>
+        <div class="q-hint">If someone in your niche thought of one specific person to follow, what is the topic you want them to associate with YOU?</div>
+        <textarea id="q-authority-topic" placeholder="e.g. I want to be the go-to authority on student retention and lesson planning for ballroom dance instructors"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Who are your top 3 direct competitors or accounts in your space?</div>
+        <div class="q-hint">Instagram handles, YouTube channels, or names</div>
+        <div class="repeater" id="competitor-list">
+          <div class="repeater-row">
+            <span class="repeater-num">01</span>
+            <input type="text" placeholder="Competitor / Peer #1">
+          </div>
+          <div class="repeater-row">
+            <span class="repeater-num">02</span>
+            <input type="text" placeholder="Competitor / Peer #2">
+          </div>
+          <div class="repeater-row">
+            <span class="repeater-num">03</span>
+            <input type="text" placeholder="Competitor / Peer #3">
+          </div>
+        </div>
+        <button class="add-more-btn" onclick="addRow('competitor-list', 'Competitor / Peer')">+ Add another</button>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What makes your approach DIFFERENT from everyone else in this niche?</div>
+        <div class="q-hint">Think lived experience, unique method, specific results, personal story, or combination of skills</div>
+        <textarea id="q-differentiator" placeholder="e.g. I play professionally in Portugal — I have hands-on experience at a level most coaches in North America don't have"></textarea>
+      </div>
+
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="prevSection()">← Back</button>
+      <button class="btn-next" onclick="nextSection()">
+        Next: Your Ideal Client
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 2 — IDEAL CLIENT
+  ══════════════════════════════════════════════ -->
+  <div class="section-card" id="section-2">
+    <div class="section-header">
+      <div class="section-tag">Section 03</div>
+      <h2 class="section-title">Your Ideal Client</h2>
+      <p class="section-desc">This is your client avatar — the exact person your content needs to speak to. Be as specific as you can.</p>
+    </div>
+    <div class="questions-grid">
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> Describe your ideal client in detail</div>
+        <div class="q-hint">Who are they? What do they do? Where do they work? How do they spend their time? Age range, background, level of expertise?</div>
+        <textarea id="q-avatar" placeholder="e.g. Beginner ballroom dance instructors, typically 25–45, who teach social dancers at community centres or private studios. They're passionate about teaching but feel disorganised and overwhelmed..." style="min-height:130px"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> Where is your ideal client RIGHT NOW? (The Zero State)</div>
+        <div class="q-hint">What does their current situation look like? What problems are they experiencing daily? What have they tried that hasn't worked?</div>
+        <textarea id="q-zero-state" placeholder="e.g. They are losing students every month, their classes are shrinking, income is dropping, and they don't know why. They feel like they're doing everything right but getting worse results..." style="min-height:130px"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> Where does your ideal client WANT to be? (The Hero State)</div>
+        <div class="q-hint">Paint the picture of their ideal future — the outcome they're chasing. What does life look like once they achieve it?</div>
+        <textarea id="q-hero-state" placeholder="e.g. They want thriving, full classes, students who stay for years, a reputation as the go-to instructor in their city, and steady income from their passion..." style="min-height:130px"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What is the ONE thing your client feels they're missing to get there?</div>
+        <div class="q-hint">The gap between where they are and where they want to be — in their own words</div>
+        <textarea id="q-missing-piece" placeholder="e.g. A clear, step-by-step system tailored to their teaching style — not generic advice"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Write your Transformation Statement (rough draft is fine)</div>
+        <div class="q-hint">Complete this: "I help [WHO] go from [ZERO STATE] to [HERO STATE] so they can [DEEPER WHY]"</div>
+        <textarea id="q-transformation" placeholder="I help beginner ballroom dance instructors go from feeling overwhelmed and losing students to..."></textarea>
+      </div>
+
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="prevSection()">← Back</button>
+      <button class="btn-next" onclick="nextSection()">
+        Next: Pain &amp; Desire
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 3 — PAIN & DESIRE
+  ══════════════════════════════════════════════ -->
+  <div class="section-card" id="section-3">
+    <div class="section-header">
+      <div class="section-tag">Section 04</div>
+      <h2 class="section-title">Pain, Fear &amp; Desire</h2>
+      <p class="section-desc">This section is the engine of your content. Every hook, caption, and script will be built from these answers.</p>
+    </div>
+    <div class="questions-grid">
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> Top 5 pains, fears &amp; frustrations your ideal client feels right now</div>
+        <div class="q-hint">These become your hooks. Be specific — generic pain points produce generic content</div>
+        <div class="repeater" id="pains-list">
+          <div class="repeater-row"><span class="repeater-num">01</span><input type="text" placeholder="Pain / Fear / Frustration #1"></div>
+          <div class="repeater-row"><span class="repeater-num">02</span><input type="text" placeholder="Pain / Fear / Frustration #2"></div>
+          <div class="repeater-row"><span class="repeater-num">03</span><input type="text" placeholder="Pain / Fear / Frustration #3"></div>
+          <div class="repeater-row"><span class="repeater-num">04</span><input type="text" placeholder="Pain / Fear / Frustration #4"></div>
+          <div class="repeater-row"><span class="repeater-num">05</span><input type="text" placeholder="Pain / Fear / Frustration #5"></div>
+        </div>
+        <button class="add-more-btn" onclick="addRow('pains-list', 'Pain / Fear / Frustration')">+ Add another</button>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> Top 5 dreams &amp; desires your ideal client is chasing</div>
+        <div class="q-hint">The outcomes they fantasise about — what keeps them motivated to look for a solution</div>
+        <div class="repeater" id="desires-list">
+          <div class="repeater-row"><span class="repeater-num">01</span><input type="text" placeholder="Dream / Desire #1"></div>
+          <div class="repeater-row"><span class="repeater-num">02</span><input type="text" placeholder="Dream / Desire #2"></div>
+          <div class="repeater-row"><span class="repeater-num">03</span><input type="text" placeholder="Dream / Desire #3"></div>
+          <div class="repeater-row"><span class="repeater-num">04</span><input type="text" placeholder="Dream / Desire #4"></div>
+          <div class="repeater-row"><span class="repeater-num">05</span><input type="text" placeholder="Dream / Desire #5"></div>
+        </div>
+        <button class="add-more-btn" onclick="addRow('desires-list', 'Dream / Desire')">+ Add another</button>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What does your ideal client say to themselves when they hit their lowest point?</div>
+        <div class="q-hint">The internal monologue at their "enough is enough" moment — write it in first person as if they're saying it</div>
+        <textarea id="q-tipping-point" placeholder="e.g. 'I've been doing this for two years and I'm still losing students every month. Maybe I'm just not cut out for this...'"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What is the biggest fear of your ideal client if they STAY where they are?</div>
+        <textarea id="q-biggest-fear" placeholder="e.g. They fear losing their livelihood and passion, and ultimately having to quit teaching altogether"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What does life look like for your client after they achieve the hero state?</div>
+        <div class="q-hint">Be vivid and specific — this is used in BOF (bottom of funnel) content to paint the vision</div>
+        <textarea id="q-after-hero" placeholder="e.g. Full classes every week, students who refer their friends, income that actually reflects their skill level, and teaching that feels effortless..."></textarea>
+      </div>
+
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="prevSection()">← Back</button>
+      <button class="btn-next" onclick="nextSection()">
+        Next: Market Research
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 4 — MARKET RESEARCH
+  ══════════════════════════════════════════════ -->
+  <div class="section-card" id="section-4">
+    <div class="section-header">
+      <div class="section-tag">Section 05</div>
+      <h2 class="section-title">Market Research</h2>
+      <p class="section-desc">Where your ideal client spends their time tells us where to find them — and how to sound like the content they already love.</p>
+    </div>
+    <div class="questions-grid">
+
+      <div class="question">
+        <div class="q-label">What keywords does your ideal client Google or search on YouTube?</div>
+        <div class="q-hint">Think about what they type when they're trying to solve their problem on their own</div>
+        <div class="repeater" id="keywords-list">
+          <div class="repeater-row"><span class="repeater-num">01</span><input type="text" placeholder="Search term #1"></div>
+          <div class="repeater-row"><span class="repeater-num">02</span><input type="text" placeholder="Search term #2"></div>
+          <div class="repeater-row"><span class="repeater-num">03</span><input type="text" placeholder="Search term #3"></div>
+        </div>
+        <button class="add-more-btn" onclick="addRow('keywords-list', 'Search term')">+ Add another</button>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Which Instagram accounts, YouTube channels, or creators does your ideal client follow?</div>
+        <div class="q-hint">Handles, channel names, or creator names — people they consider trusted authorities in the space</div>
+        <div class="repeater" id="creators-list">
+          <div class="repeater-row"><span class="repeater-num">01</span><input type="text" placeholder="Creator / account #1"></div>
+          <div class="repeater-row"><span class="repeater-num">02</span><input type="text" placeholder="Creator / account #2"></div>
+          <div class="repeater-row"><span class="repeater-num">03</span><input type="text" placeholder="Creator / account #3"></div>
+        </div>
+        <button class="add-more-btn" onclick="addRow('creators-list', 'Creator / account')">+ Add another</button>
+      </div>
+
+      <div class="q-row cols-2">
+        <div class="question">
+          <div class="q-label">Facebook Groups they're in</div>
+          <textarea id="q-fb-groups" placeholder="e.g. Dance Teachers United, Studio Owners Network..." style="min-height:80px"></textarea>
+        </div>
+        <div class="question">
+          <div class="q-label">Reddit forums, LinkedIn profiles, or other online communities</div>
+          <textarea id="q-other-community" placeholder="e.g. r/danceteachers, LinkedIn groups..." style="min-height:80px"></textarea>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What books, courses, or products has your ideal client already bought to try to solve their problem?</div>
+        <div class="q-hint">What have they already invested in? What was missing from those resources?</div>
+        <textarea id="q-prior-investments" placeholder="e.g. Various online teaching courses, workshop weekends, teaching books — all lacked practical application..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label">How much has your ideal client roughly spent TRYING to solve their problem?</div>
+        <select id="q-prior-spend">
+          <option value="" disabled selected>Select a range</option>
+          <option>Under $200</option>
+          <option>$200–$500</option>
+          <option>$500–$1,500</option>
+          <option>$1,500–$5,000</option>
+          <option>$5,000+</option>
+          <option>I'm not sure</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Where does your ideal client hang out OFFLINE?</div>
+        <div class="q-hint">Conferences, workshops, local events, networking groups, etc.</div>
+        <textarea id="q-offline-hangouts" placeholder="e.g. Local dance competitions, national dance teacher conferences, studio open days..."></textarea>
+      </div>
+
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="prevSection()">← Back</button>
+      <button class="btn-next" onclick="nextSection()">
+        Next: Marketing IQ
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 5 — MARKETING IQ
+  ══════════════════════════════════════════════ -->
+  <div class="section-card" id="section-5">
+    <div class="section-header">
+      <div class="section-tag">Section 06</div>
+      <h2 class="section-title">Your Marketing IQ</h2>
+      <p class="section-desc">Knowing where you're starting from lets us tailor your strategy. No wrong answers — just honest ones.</p>
+    </div>
+    <div class="questions-grid">
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> How familiar are you with Instagram marketing?</div>
+        <div class="radio-group" id="q-ig-familiarity">
+          <div class="radio-pill"><input type="radio" name="ig-fam" id="igf1" value="Complete beginner"><label for="igf1"><span class="pill-dot"></span>Complete beginner</label></div>
+          <div class="radio-pill"><input type="radio" name="ig-fam" id="igf2" value="I post occasionally but no strategy"><label for="igf2"><span class="pill-dot"></span>I post occasionally</label></div>
+          <div class="radio-pill"><input type="radio" name="ig-fam" id="igf3" value="I have a rough strategy but inconsistent"><label for="igf3"><span class="pill-dot"></span>Some strategy, inconsistent</label></div>
+          <div class="radio-pill"><input type="radio" name="ig-fam" id="igf4" value="Consistent and strategic"><label for="igf4"><span class="pill-dot"></span>Consistent &amp; strategic</label></div>
+          <div class="radio-pill"><input type="radio" name="ig-fam" id="igf5" value="Advanced — I know what I'm doing"><label for="igf5"><span class="pill-dot"></span>Advanced</label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> Do you know what a CTA (Call to Action) is?</div>
+        <div class="radio-group" id="q-cta-knowledge">
+          <div class="radio-pill"><input type="radio" name="cta-know" id="ctak1" value="No, never heard of it"><label for="ctak1"><span class="pill-dot"></span>Never heard of it</label></div>
+          <div class="radio-pill"><input type="radio" name="cta-know" id="ctak2" value="I've heard of it but don't use it"><label for="ctak2"><span class="pill-dot"></span>Heard of it, don't use it</label></div>
+          <div class="radio-pill"><input type="radio" name="cta-know" id="ctak3" value="I use CTAs sometimes"><label for="ctak3"><span class="pill-dot"></span>Use it sometimes</label></div>
+          <div class="radio-pill"><input type="radio" name="cta-know" id="ctak4" value="Yes — I use strategic CTAs on all my posts"><label for="ctak4"><span class="pill-dot"></span>Yes, use strategically</label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Are you familiar with the TOF / MOF / BOF funnel concept?</div>
+        <div class="q-hint">Top of Funnel (attract strangers), Middle of Funnel (build trust), Bottom of Funnel (convert to leads/sales)</div>
+        <div class="radio-group" id="q-funnel-knowledge">
+          <div class="radio-pill"><input type="radio" name="funnel-know" id="fk1" value="Not at all"><label for="fk1"><span class="pill-dot"></span>Not at all</label></div>
+          <div class="radio-pill"><input type="radio" name="funnel-know" id="fk2" value="I've heard of it"><label for="fk2"><span class="pill-dot"></span>Heard of it</label></div>
+          <div class="radio-pill"><input type="radio" name="funnel-know" id="fk3" value="I understand it but don't apply it"><label for="fk3"><span class="pill-dot"></span>Understand but don't apply</label></div>
+          <div class="radio-pill"><input type="radio" name="funnel-know" id="fk4" value="I actively create content for each stage"><label for="fk4"><span class="pill-dot"></span>Actively use it</label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> Do you post Reels / short-form video content?</div>
+        <div class="radio-group" id="q-reels-usage">
+          <div class="radio-pill"><input type="radio" name="reels-use" id="ru1" value="Never"><label for="ru1"><span class="pill-dot"></span>Never</label></div>
+          <div class="radio-pill"><input type="radio" name="reels-use" id="ru2" value="Rarely"><label for="ru2"><span class="pill-dot"></span>Rarely</label></div>
+          <div class="radio-pill"><input type="radio" name="reels-use" id="ru3" value="A few times a month"><label for="ru3"><span class="pill-dot"></span>Few times/month</label></div>
+          <div class="radio-pill"><input type="radio" name="reels-use" id="ru4" value="1–3 per week"><label for="ru4"><span class="pill-dot"></span>1–3/week</label></div>
+          <div class="radio-pill"><input type="radio" name="reels-use" id="ru5" value="Daily or near-daily"><label for="ru5"><span class="pill-dot"></span>Daily</label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What content formats have you tried before?</div>
+        <div class="check-group" id="q-formats-tried">
+          <div class="check-pill"><input type="checkbox" id="cf1" value="Reels"><label for="cf1">Reels</label></div>
+          <div class="check-pill"><input type="checkbox" id="cf2" value="Static posts / photos"><label for="cf2">Static posts</label></div>
+          <div class="check-pill"><input type="checkbox" id="cf3" value="Carousels"><label for="cf3">Carousels</label></div>
+          <div class="check-pill"><input type="checkbox" id="cf4" value="Stories"><label for="cf4">Stories</label></div>
+          <div class="check-pill"><input type="checkbox" id="cf5" value="Lives"><label for="cf5">Lives</label></div>
+          <div class="check-pill"><input type="checkbox" id="cf6" value="YouTube"><label for="cf6">YouTube</label></div>
+          <div class="check-pill"><input type="checkbox" id="cf7" value="TikTok"><label for="cf7">TikTok</label></div>
+          <div class="check-pill"><input type="checkbox" id="cf8" value="Podcasts"><label for="cf8">Podcasts</label></div>
+          <div class="check-pill"><input type="checkbox" id="cf9" value="Email newsletters"><label for="cf9">Email</label></div>
+          <div class="check-pill"><input type="checkbox" id="cf10" value="None yet"><label for="cf10">None yet</label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What's been your biggest challenge with content creation so far?</div>
+        <textarea id="q-content-challenge" placeholder="e.g. I don't know what to say, I freeze on camera, I never feel like my content sounds like me, I get no engagement..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Have you worked with a content strategist or marketing professional before?</div>
+        <div class="radio-group" id="q-prior-marketer">
+          <div class="radio-pill"><input type="radio" name="prior-m" id="pm1" value="No, this is my first time"><label for="pm1"><span class="pill-dot"></span>No, first time</label></div>
+          <div class="radio-pill"><input type="radio" name="prior-m" id="pm2" value="Yes, once or twice"><label for="pm2"><span class="pill-dot"></span>Yes, once or twice</label></div>
+          <div class="radio-pill"><input type="radio" name="prior-m" id="pm3" value="Yes, I've had ongoing help"><label for="pm3"><span class="pill-dot"></span>Yes, ongoing</label></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="prevSection()">← Back</button>
+      <button class="btn-next" onclick="nextSection()">
+        Next: Your Offer
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 6 — YOUR OFFER
+  ══════════════════════════════════════════════ -->
+  <div class="section-card" id="section-6">
+    <div class="section-header">
+      <div class="section-tag">Section 07</div>
+      <h2 class="section-title">Your Offer</h2>
+      <p class="section-desc">What are you selling? Your content system needs to be built around a destination — your offer is it.</p>
+    </div>
+    <div class="questions-grid">
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> What is your current main offer?</div>
+        <div class="q-hint">What do you sell or plan to sell? Be specific about what it is and what it includes.</div>
+        <textarea id="q-main-offer" placeholder="e.g. A 4-week online coaching programme for beginner ballroom dance instructors covering lesson planning, student communication, and retention systems..." style="min-height:120px"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> What type of offer is it?</div>
+        <div class="check-group" id="q-offer-type">
+          <div class="check-pill"><input type="checkbox" id="ot1" value="1-on-1 coaching"><label for="ot1">1-on-1 Coaching</label></div>
+          <div class="check-pill"><input type="checkbox" id="ot2" value="Group coaching / programme"><label for="ot2">Group Programme</label></div>
+          <div class="check-pill"><input type="checkbox" id="ot3" value="Online course / self-paced"><label for="ot3">Online Course</label></div>
+          <div class="check-pill"><input type="checkbox" id="ot4" value="Digital product (template, guide, PDF)"><label for="ot4">Digital Product</label></div>
+          <div class="check-pill"><input type="checkbox" id="ot5" value="Membership / community"><label for="ot5">Membership</label></div>
+          <div class="check-pill"><input type="checkbox" id="ot6" value="Service / done-for-you"><label for="ot6">Done-for-You Service</label></div>
+          <div class="check-pill"><input type="checkbox" id="ot7" value="In-person / local service"><label for="ot7">In-Person Service</label></div>
+          <div class="check-pill"><input type="checkbox" id="ot8" value="Not sure yet"><label for="ot8">Not sure yet</label></div>
+        </div>
+      </div>
+
+      <div class="q-row cols-2">
+        <div class="question">
+          <div class="q-label">Current price point (or intended price)</div>
+          <select id="q-price">
+            <option value="" disabled selected>Select a range</option>
+            <option>Free / Lead magnet</option>
+            <option>Under $100</option>
+            <option>$100–$500</option>
+            <option>$500–$1,000</option>
+            <option>$1,000–$2,500</option>
+            <option>$2,500–$5,000</option>
+            <option>$5,000+</option>
+            <option>Not decided yet</option>
+          </select>
+        </div>
+        <div class="question">
+          <div class="q-label">Do you have an existing product/offer live?</div>
+          <select id="q-offer-live">
+            <option value="" disabled selected>Select one</option>
+            <option>Yes, it's live and selling</option>
+            <option>Yes, but not selling consistently</option>
+            <option>No, still building it</option>
+            <option>No, not started yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What specific transformation does your offer deliver?</div>
+        <div class="q-hint">In simple terms — from what to what, in how long?</div>
+        <textarea id="q-offer-transformation" placeholder="e.g. From losing students every month to having a full, structured programme with high retention — in 4 weeks of working with me"></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Do you have any results or testimonials from past clients?</div>
+        <div class="q-hint">Even rough ones. Screenshots, numbers, stories — anything that proves your offer works</div>
+        <textarea id="q-proof" placeholder="e.g. One client doubled her class retention rate in 6 weeks. Another signed on 3 new students in the first month..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What does your curriculum or programme include? (rough outline is fine)</div>
+        <div class="q-hint">Modules, sessions, frameworks, tools, bonuses — anything inside the offer</div>
+        <textarea id="q-curriculum" placeholder="e.g. Week 1: Lesson planning framework. Week 2: Student communication systems. Week 3: Retention strategies. Week 4: Building community..." style="min-height:120px"></textarea>
+      </div>
+
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="prevSection()">← Back</button>
+      <button class="btn-next" onclick="nextSection()">
+        Next: Goals &amp; Capacity
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 7 — GOALS & CAPACITY
+  ══════════════════════════════════════════════ -->
+  <div class="section-card" id="section-7">
+    <div class="section-header">
+      <div class="section-tag">Section 08</div>
+      <h2 class="section-title">Goals &amp; Capacity</h2>
+      <p class="section-desc">The last section. Let's make sure your content strategy matches your real-life time and goals.</p>
+    </div>
+    <div class="questions-grid">
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> What is your primary goal for Instagram right now?</div>
+        <div class="radio-group vertical" id="q-primary-goal">
+          <div class="radio-pill"><input type="radio" name="prim-goal" id="pg1" value="Grow my follower count fast"><label for="pg1"><span class="pill-dot"></span>Grow my follower count fast (TOF focus)</label></div>
+          <div class="radio-pill"><input type="radio" name="prim-goal" id="pg2" value="Build trust with current audience and get DMs"><label for="pg2"><span class="pill-dot"></span>Build trust and start getting DMs (MOF focus)</label></div>
+          <div class="radio-pill"><input type="radio" name="prim-goal" id="pg3" value="Convert followers into leads and paying clients"><label for="pg3"><span class="pill-dot"></span>Convert followers into paying clients (BOF focus)</label></div>
+          <div class="radio-pill"><input type="radio" name="prim-goal" id="pg4" value="All three — full funnel system"><label for="pg4"><span class="pill-dot"></span>All three — full funnel system</label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> How many Reels / posts can you realistically commit to per week?</div>
+        <div class="radio-group" id="q-posting-capacity">
+          <div class="radio-pill"><input type="radio" name="post-cap" id="pc1" value="1–2 per week"><label for="pc1"><span class="pill-dot"></span>1–2 / week</label></div>
+          <div class="radio-pill"><input type="radio" name="post-cap" id="pc2" value="3–4 per week"><label for="pc2"><span class="pill-dot"></span>3–4 / week</label></div>
+          <div class="radio-pill"><input type="radio" name="post-cap" id="pc3" value="5–7 per week"><label for="pc3"><span class="pill-dot"></span>5–7 / week</label></div>
+          <div class="radio-pill"><input type="radio" name="post-cap" id="pc4" value="Daily+"><label for="pc4"><span class="pill-dot"></span>Daily+</label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> How comfortable are you on camera?</div>
+        <div class="scale-wrap">
+          <span class="scale-label-end">Not at all</span>
+          <input type="range" id="q-camera-comfort" min="1" max="10" value="5" oninput="document.getElementById('comfort-val').textContent = this.value">
+          <span class="scale-label-end">Totally natural</span>
+          <div class="scale-val" id="comfort-val">5</div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label"><span class="req">*</span> Follower goal in the next 90 days</div>
+        <select id="q-follower-goal">
+          <option value="" disabled selected>Select a target</option>
+          <option>500</option>
+          <option>1,000</option>
+          <option>5,000</option>
+          <option>10,000</option>
+          <option>25,000</option>
+          <option>50,000+</option>
+          <option>I don't care about followers — just clients</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Revenue goal from Instagram in the next 90 days</div>
+        <select id="q-revenue-goal">
+          <option value="" disabled selected>Select a target</option>
+          <option>$0 — not monetising yet</option>
+          <option>$500–$1,000</option>
+          <option>$1,000–$5,000</option>
+          <option>$5,000–$10,000</option>
+          <option>$10,000–$25,000</option>
+          <option>$25,000+</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <div class="q-label">What kind of content do you enjoy creating most?</div>
+        <div class="q-hint">This affects the tone and format of your scripts — play to your natural strengths</div>
+        <div class="check-group" id="q-enjoy-content">
+          <div class="check-pill"><input type="checkbox" id="ec1" value="Talking head / face to camera"><label for="ec1">Talking Head</label></div>
+          <div class="check-pill"><input type="checkbox" id="ec2" value="Voiceover with footage"><label for="ec2">Voiceover + Footage</label></div>
+          <div class="check-pill"><input type="checkbox" id="ec3" value="Text on screen only"><label for="ec3">Text on Screen</label></div>
+          <div class="check-pill"><input type="checkbox" id="ec4" value="Demonstration / tutorial"><label for="ec4">Tutorial / Demo</label></div>
+          <div class="check-pill"><input type="checkbox" id="ec5" value="Storytelling / personal vlog"><label for="ec5">Storytelling</label></div>
+          <div class="check-pill"><input type="checkbox" id="ec6" value="Behind the scenes"><label for="ec6">Behind the Scenes</label></div>
+          <div class="check-pill"><input type="checkbox" id="ec7" value="Not sure yet"><label for="ec7">Not sure</label></div>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">Is there anything else you want us to know?</div>
+        <div class="q-hint">Personal context, limitations, specific goals, things that have NOT worked — anything that helps us build your strategy better</div>
+        <textarea id="q-anything-else" placeholder="Tell us anything you feel is important that wasn't covered above..." style="min-height:120px"></textarea>
+      </div>
+
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="prevSection()">← Back</button>
+      <button class="btn-next btn-submit" onclick="submitForm()">
+        Submit My Blueprint
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 1l7 7-7 7M15 8H1"/></svg>
+      </button>
+    </div>
+  </div>
+
+</div><!-- /form-wrapper -->
+
+<!-- SUCCESS SCREEN -->
+<div id="success-screen">
+  <div class="success-icon">✓</div>
+  <h2 class="success-title">Blueprint Received</h2>
+  <p class="success-sub">Your answers have been compiled below. Copy and paste this into your marketing AI to generate your full content system.</p>
+
+  <div class="summary-box">
+    <div class="summary-header">
+      <h3>Your Full Blueprint Output</h3>
+      <button class="copy-btn" onclick="copyOutput()">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="10" height="10" rx="1"/><path d="M2 2h8v2H2V2z"/></svg>
+        Copy All
+      </button>
+    </div>
+    <div id="summary-output"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast">Copied to clipboard ✓</div>
+
+<script>
+  let currentSection = 0;
+  const totalSections = 8;
+
+  const sectionNames = [
+    '01 — About You',
+    '02 — Your Niche',
+    '03 — Ideal Client',
+    '04 — Pain & Desire',
+    '05 — Market Research',
+    '06 — Marketing IQ',
+    '07 — Your Offer',
+    '08 — Goals & Capacity'
+  ];
+
+  function startForm() {
+    document.getElementById('hero-section').style.display = 'none';
+    document.getElementById('form-wrapper').classList.add('visible');
+    document.getElementById('progress-wrap').classList.add('visible');
+    document.getElementById('sections-nav').classList.add('visible');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const pct = ((currentSection) / totalSections) * 100;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-section-name').textContent = sectionNames[currentSection];
+    document.getElementById('progress-counter').textContent = (currentSection + 1) + ' / ' + totalSections;
+
+    // Update pills
+    for (let i = 0; i < totalSections; i++) {
+      const pill = document.getElementById('pill-' + i);
+      if (!pill) continue;
+      pill.classList.remove('done', 'current');
+      if (i < currentSection) pill.classList.add('done');
+      else if (i === currentSection) pill.classList.add('current');
+    }
+  }
+
+  function nextSection() {
+    document.getElementById('section-' + currentSection).classList.remove('active');
+    currentSection++;
+    document.getElementById('section-' + currentSection).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function prevSection() {
+    document.getElementById('section-' + currentSection).classList.remove('active');
+    currentSection--;
+    document.getElementById('section-' + currentSection).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function addRow(listId, placeholder) {
+    const list = document.getElementById(listId);
+    const count = list.querySelectorAll('.repeater-row').length + 1;
+    const row = document.createElement('div');
+    row.className = 'repeater-row';
+    const num = String(count).padStart(2, '0');
+    row.innerHTML = `
+      <span class="repeater-num">${num}</span>
+      <input type="text" placeholder="${placeholder} #${count}">
+      <button class="remove-btn" onclick="this.parentElement.remove()">−</button>
+    `;
+    list.appendChild(row);
+  }
+
+  function getRadioVal(name) {
+    const checked = document.querySelector(`input[name="${name}"]:checked`);
+    return checked ? checked.value : '—';
+  }
+
+  function getCheckboxVals(containerId) {
+    const checks = document.querySelectorAll(`#${containerId} input:checked`);
+    return Array.from(checks).map(c => c.value).join(', ') || '—';
+  }
+
+  function getRepeaterVals(listId) {
+    const inputs = document.querySelectorAll(`#${listId} input[type="text"]`);
+    return Array.from(inputs).map((inp, i) => inp.value.trim() ? `  ${String(i+1).padStart(2,'0')}. ${inp.value.trim()}` : null).filter(Boolean).join('\n') || '  —';
+  }
+
+  function val(id) {
+    const el = document.getElementById(id);
+    if (!el) return '—';
+    return el.value.trim() || '—';
+  }
+
+  function submitForm() {
+    const output = buildOutput();
+    const clientName = val('q-name') || 'Unknown Client';
+    const clientEmail = val('q-email') || '';
+
+    const submitBtn = document.querySelector('.btn-submit');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+    }
+
+    emailjs.send('service_0gfql2u', 'template_jdeo25i', {
+      client_name: clientName,
+      name: clientName,
+      email: clientEmail,
+      message: output,
+      time: new Date().toLocaleString()
+    })
+    .then(() => {
+      document.getElementById('summary-output').textContent = output;
+      document.getElementById('form-wrapper').classList.remove('visible');
+      document.getElementById('progress-wrap').classList.remove('visible');
+      document.getElementById('sections-nav').classList.remove('visible');
+      document.getElementById('success-screen').classList.add('visible');
+      document.getElementById('progress-fill').style.width = '100%';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch((error) => {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit My Blueprint \u2192';
+      }
+      const toast = document.getElementById('toast');
+      toast.textContent = '\u26a0\ufe0f Send failed \u2014 check your connection and try again';
+      toast.style.borderColor = 'rgba(248,113,113,0.5)';
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+        toast.textContent = 'Copied to clipboard \u2713';
+        toast.style.borderColor = '';
+      }, 4000);
+      console.error('EmailJS error:', error);
+    });
+  }
+
+  function buildOutput() {
+    const line = '─────────────────────────────────────────────────────────\n';
+    const dbl  = '═════════════════════════════════════════════════════════\n';
+
+    let out = '';
+    out += dbl;
+    out += 'THE BRAND SOLUTION — CLIENT INTELLIGENCE BRIEF\n';
+    out += dbl + '\n';
+
+    // Section 0
+    out += '▸ SECTION 01 — ABOUT YOU\n' + line;
+    out += `Name:               ${val('q-name')}\n`;
+    out += `Email:              ${val('q-email')}\n`;
+    out += `Instagram:          ${val('q-instagram')}\n`;
+    out += `Website:            ${val('q-website')}\n`;
+    out += `What they do:       ${val('q-what-you-do')}\n`;
+    out += `Experience:         ${val('q-experience')}\n`;
+    out += `Current followers:  ${val('q-followers')}\n`;
+    out += `Location:           ${val('q-location')}\n\n`;
+
+    // Section 1
+    out += '▸ SECTION 02 — NICHE\n' + line;
+    out += `Primary niche:      ${val('q-niche')}\n\n`;
+    out += `Sub-niches:\n${getRepeaterVals('subniche-list')}\n\n`;
+    out += `Authority topic:    ${val('q-authority-topic')}\n\n`;
+    out += `Competitors:\n${getRepeaterVals('competitor-list')}\n\n`;
+    out += `Differentiator:     ${val('q-differentiator')}\n\n`;
+
+    // Section 2
+    out += '▸ SECTION 03 — IDEAL CLIENT\n' + line;
+    out += `Client avatar:\n  ${val('q-avatar')}\n\n`;
+    out += `Zero state (where they are now):\n  ${val('q-zero-state')}\n\n`;
+    out += `Hero state (desired outcome):\n  ${val('q-hero-state')}\n\n`;
+    out += `The missing piece:\n  ${val('q-missing-piece')}\n\n`;
+    out += `Transformation statement:\n  ${val('q-transformation')}\n\n`;
+
+    // Section 3
+    out += '▸ SECTION 04 — PAIN, FEAR & DESIRE\n' + line;
+    out += `Top pains / fears / frustrations:\n${getRepeaterVals('pains-list')}\n\n`;
+    out += `Top dreams / desires:\n${getRepeaterVals('desires-list')}\n\n`;
+    out += `Tipping point monologue:\n  ${val('q-tipping-point')}\n\n`;
+    out += `Biggest fear of staying stuck:\n  ${val('q-biggest-fear')}\n\n`;
+    out += `Life after the hero state:\n  ${val('q-after-hero')}\n\n`;
+
+    // Section 4
+    out += '▸ SECTION 05 — MARKET RESEARCH\n' + line;
+    out += `Search keywords:\n${getRepeaterVals('keywords-list')}\n\n`;
+    out += `Creators / accounts they follow:\n${getRepeaterVals('creators-list')}\n\n`;
+    out += `Facebook groups:    ${val('q-fb-groups')}\n`;
+    out += `Other communities:  ${val('q-other-community')}\n`;
+    out += `Prior investments:  ${val('q-prior-investments')}\n`;
+    out += `Prior spend:        ${val('q-prior-spend')}\n`;
+    out += `Offline hangouts:   ${val('q-offline-hangouts')}\n\n`;
+
+    // Section 5
+    out += '▸ SECTION 06 — MARKETING IQ\n' + line;
+    out += `IG familiarity:     ${getRadioVal('ig-fam')}\n`;
+    out += `Knows CTAs:         ${getRadioVal('cta-know')}\n`;
+    out += `Funnel knowledge:   ${getRadioVal('funnel-know')}\n`;
+    out += `Reels usage:        ${getRadioVal('reels-use')}\n`;
+    out += `Formats tried:      ${getCheckboxVals('q-formats-tried')}\n`;
+    out += `Content challenge:  ${val('q-content-challenge')}\n`;
+    out += `Prior marketer:     ${getRadioVal('prior-m')}\n\n`;
+
+    // Section 6
+    out += '▸ SECTION 07 — YOUR OFFER\n' + line;
+    out += `Main offer:\n  ${val('q-main-offer')}\n\n`;
+    out += `Offer type:         ${getCheckboxVals('q-offer-type')}\n`;
+    out += `Price point:        ${val('q-price')}\n`;
+    out += `Offer live:         ${val('q-offer-live')}\n`;
+    out += `Offer transformation:\n  ${val('q-offer-transformation')}\n\n`;
+    out += `Proof / testimonials:\n  ${val('q-proof')}\n\n`;
+    out += `Curriculum outline:\n  ${val('q-curriculum')}\n\n`;
+
+    // Section 7
+    out += '▸ SECTION 08 — GOALS & CAPACITY\n' + line;
+    out += `Primary goal:       ${getRadioVal('prim-goal')}\n`;
+    out += `Posting capacity:   ${getRadioVal('post-cap')}\n`;
+    out += `Camera comfort:     ${document.getElementById('q-camera-comfort').value} / 10\n`;
+    out += `Follower goal:      ${val('q-follower-goal')}\n`;
+    out += `Revenue goal:       ${val('q-revenue-goal')}\n`;
+    out += `Enjoy creating:     ${getCheckboxVals('q-enjoy-content')}\n`;
+    out += `Additional notes:\n  ${val('q-anything-else')}\n\n`;
+
+    out += dbl;
+    out += 'END OF BRIEF — THE BRAND SOLUTION\n';
+    out += dbl;
+
+    return out;
+  }
+
+  function copyOutput() {
+    const text = document.getElementById('summary-output').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    });
+  }
+</script>
+
+</body>
+</html>
